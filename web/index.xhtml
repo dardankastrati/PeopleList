@@ -7,7 +7,7 @@
         <title>Liste personnes</title>
     </h:head>
     <h:body>
-        
+        <h2>Liste des personnes</h2>
         <h:dataTable value="#{peopleListBean.peopleList}" var="people">
             <h:column>    				
                 <f:facet name="id">Name</f:facet>    				
@@ -34,6 +34,44 @@
                     #{people.birthDate}
             </h:column>
         </h:dataTable>
+
+        <h2>Formulaire d'ajout d'une nouvelle personne</h2>
+        <h:form>
+            <fieldset>
+                <legend>Inscription</legend>
+
+                Titre 
+                <h:selectOneMenu value="#{person.gender}">
+                    <f:selectItem itemValue="male" itemLabel="male" />
+                    <f:selectItem itemValue="female" itemLabel="female" />
+                </h:selectOneMenu>
+                <br />
+                
+                Prénom 
+                <h:inputText value="#{person.firstName}" />
+                <br />
+
+                Nom 
+                <h:inputText value="#{person.lastName}" />
+                <br />
+
+                Marié ? 
+                <h:selectOneRadio value="#{person.married}">
+                    <f:selectItem itemValue="#{true}" itemLabel="Oui" />
+                    <f:selectItem itemValue="#{false}" itemLabel="Non" />
+                </h:selectOneRadio>
+                <br />
+
+                Date de naissance
+                <h:inputText value="#{person.birthDate}">  
+                    <f:convertDateTime pattern="dd.mm.yyyy"/>  
+                </h:inputText>
+
+                <h:commandButton value="Inscription" action="#{services.savePerson(person.gender, person.firstName, person.lastName, person.married, person.birthDate)}" />
+                <!--person.gender, person.firstName, person.lastName, person.married, person.birthDate-->
+                <br />
+            </fieldset>
+        </h:form>
     </h:body>
 </html>
 

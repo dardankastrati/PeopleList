@@ -13,23 +13,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author julien.plumez
  */
 @SessionScoped
-@Stateful	// Chaque instance sera différente des autres
+@Stateful	// Chaque instance sera diffï¿½rente des autres
+@Named(value = "services")
 public class Services implements Serializable{
     
-    // Permet de stocker la liste de personnes de telle manière à simuler une base de données
+    // Permet de stocker la liste de personnes de telle maniï¿½re ï¿½ simuler une base de donnï¿½es
     private Map<Long, Person> people;
     
     // Compteur permettant d'avoir des IDs uniques lors de l'ajout de nouvelles personnes
     private Long currentMaxId = 1l;
     
     public Services(){
-        // Crée 6 personnes à chaque création de session pour avoir une base sur laquelle travailler
+        // Crï¿½e 6 personnes ï¿½ chaque crï¿½ation de session pour avoir une base sur laquelle travailler
         try {
             people = new HashMap<>();
             SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
@@ -97,9 +99,9 @@ public class Services implements Serializable{
     /**
      * Sauvegarde une nouvelle personne dans la liste, et retourne l'id de ladite nouvelle personne
      * @param gender Genre de la personne
-     * @param firstName Prénom de la personne
+     * @param firstName Prï¿½nom de la personne
      * @param lastName Nom de la personne
-     * @param married La personne est-elle mariée ?
+     * @param married La personne est-elle mariï¿½e ?
      * @param birthDate Date de naissance de la personne
      * @return L'ID de la nouvelle personne
      */

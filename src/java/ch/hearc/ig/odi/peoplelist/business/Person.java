@@ -1,13 +1,19 @@
 
 package ch.hearc.ig.odi.peoplelist.business;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
  * @author dardan.kastrati
  */
-public class Person {
+
+@Named(value = "person")
+@SessionScoped
+public class Person implements Serializable{
     private Long id;
     private String gender;
     private String firstName;
