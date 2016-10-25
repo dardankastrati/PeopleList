@@ -7,30 +7,31 @@
         <title>Liste personnes</title>
     </h:head>
     <h:body>
-        <h2>Liste des personnes</h2>
+        <h2><h:outputText value="#{msg['listPerson']}" /></h2>
+        
         <h:dataTable value="#{peopleListBean.peopleList}" var="people">
             <h:column>    				
-                <f:facet name="id">Name</f:facet>    				
+                <f:facet name="id"><h:outputText value="" /></f:facet>    				
                     #{people.id}
             </h:column>
             <h:column>
-                <f:facet name="gender">Department</f:facet>
+                <f:facet name="gender">gender</f:facet>
                     #{people.gender}
             </h:column>
             <h:column>
-                <f:facet name="firstName">Age</f:facet>
+                <f:facet name="firstName">firstName</f:facet>
                     #{people.firstName}
             </h:column>
             <h:column>
-                <f:facet name="lastName">Salary</f:facet>
+                <f:facet name="lastName">lastName</f:facet>
                     #{people.lastName}
             </h:column>
             <h:column>
-                <f:facet name="married">Salary</f:facet>
+                <f:facet name="married">married</f:facet>
                     #{people.married}
             </h:column>
             <h:column>
-                <f:facet name="birthDate">Salary</f:facet>
+                <f:facet name="birthDate">birthDate</f:facet>
                     #{people.birthDate}
             </h:column>
         </h:dataTable>
