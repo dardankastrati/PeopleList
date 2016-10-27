@@ -42,33 +42,33 @@
                 <legend>Inscription</legend>
 
                 Titre 
-                <h:selectOneMenu value="#{person.gender}">
+                <h:selectOneMenu value="#{peopleListBean.person.gender}">
                     <f:selectItem itemValue="male" itemLabel="male" />
                     <f:selectItem itemValue="female" itemLabel="female" />
                 </h:selectOneMenu>
                 <br />
                 
                 Prénom 
-                <h:inputText value="#{person.firstName}" />
+                <h:inputText value="#{peopleListBean.person.firstName}" />
                 <br />
 
                 Nom 
-                <h:inputText value="#{person.lastName}" />
+                <h:inputText value="#{peopleListBean.person.lastName}" />
                 <br />
 
                 Marié ? 
-                <h:selectOneRadio value="#{person.married}">
+                <h:selectOneRadio value="#{peopleListBean.person.married}">
                     <f:selectItem itemValue="#{true}" itemLabel="Oui" />
                     <f:selectItem itemValue="#{false}" itemLabel="Non" />
                 </h:selectOneRadio>
                 <br />
 
                 Date de naissance
-                <h:inputText value="#{person.birthDate}">  
+                <h:inputText value="#{peopleListBean.person.birthDate}">  
                     <f:convertDateTime pattern="dd.mm.yyyy"/>  
                 </h:inputText>
 
-                <h:commandButton value="Inscription" action="#{services.savePerson(person.gender, person.firstName, person.lastName, person.married, person.birthDate)}" />
+                <h:commandButton value="Inscription" action="#{peopleListBean.addPerson()}" />
                 <!--person.gender, person.firstName, person.lastName, person.married, person.birthDate-->
                 <br />
             </fieldset>

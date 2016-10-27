@@ -11,9 +11,7 @@ import javax.inject.Named;
  * @author dardan.kastrati
  */
 
-@Named(value = "person")
-@SessionScoped
-public class Person implements Serializable{
+public class Person {
     private Long id;
     private String gender;
     private String firstName;
@@ -71,6 +69,4 @@ public class Person implements Serializable{
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
-    
-    
 }

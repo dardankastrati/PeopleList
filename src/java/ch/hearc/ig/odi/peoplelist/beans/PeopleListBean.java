@@ -5,7 +5,9 @@
  */
 package ch.hearc.ig.odi.peoplelist.beans;
 
+import ch.hearc.ig.odi.peoplelist.business.Person;
 import ch.hearc.ig.odi.peoplelist.service.Services;
+import java.util.Date;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -20,6 +22,7 @@ import javax.inject.Inject;
 //@Dependent
 @RequestScoped
 public class PeopleListBean {
+    private Person person = new Person();
 
     @Inject Services services;
     
@@ -28,8 +31,20 @@ public class PeopleListBean {
      */
     public PeopleListBean() {
     }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
     
     public List getPeopleList(){
         return services.getPeopleList();
+    }
+    
+    public void addPerson(){
+        services.savePerson(person.getGender(), person.getFirstName(), person.getLastName(), person.isMarried(), person.getBirthDate());
     }
 }
