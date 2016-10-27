@@ -4,14 +4,16 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>#{msg['html.page.title.suppPerson']}</title>
     </h:head>
     <h:body>
         <h2><h:outputText value="#{msg['listPerson']}" /></h2>
-        <h:selectOneMenu id="lovPeoples" value="#{peopleListBean.person}" >
-            <f:converter binding="#{personLovConverter}" />
-            <f:selectItems value="#{peopleListBean.peopleList}" var="people" itemLabel="#{people.firstname}" />
-        </h:selectOneMenu>    
+        <h:form>
+            <h:selectOneMenu id="lovPeoples" value="#{peopleListBean.person}" >
+                <f:converter binding="#{personLOVConverter}" />
+                <f:selectItems value="#{peopleListBean.peopleList}" var="people" itemLabel="#{people.firstName}" />
+            </h:selectOneMenu>    
+        </h:form>
     </h:body>
 </html>
 

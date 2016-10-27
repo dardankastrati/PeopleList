@@ -5,11 +5,14 @@
  */
 package ch.hearc.ig.odi.peoplelist.presentation.beans;
 
+import ch.hearc.ig.odi.peoplelist.business.Person;
+import ch.hearc.ig.odi.peoplelist.service.Services;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.inject.Inject;
 
 /**
  *
@@ -17,7 +20,10 @@ import javax.faces.convert.Converter;
  */
 @Named(value = "personLOVConverter")
 @Dependent
-public class PersonLOVConverter implements Converter{
+public class PersonLOVConverter implements Converter {
+
+    @Inject
+    Services services;
 
     /**
      * Creates a new instance of PersonLOVConverter
@@ -27,12 +33,22 @@ public class PersonLOVConverter implements Converter{
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (value == null) {
+            return null;
+        } else {
+            return services.getPerson(new Long(value));
+        }
     }
 
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (value == null) {
+            return null;
+        } else if (value instanceof Person) {
+            return ((Person) value).getId().toString();
+        } else {
+            return "";
+        }
     }
-    
+
 }
