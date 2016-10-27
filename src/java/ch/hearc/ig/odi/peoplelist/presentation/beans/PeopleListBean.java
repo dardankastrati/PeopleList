@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.hearc.ig.odi.peoplelist.beans;
+package ch.hearc.ig.odi.peoplelist.presentation.beans;
 
 import ch.hearc.ig.odi.peoplelist.business.Person;
 import ch.hearc.ig.odi.peoplelist.service.Services;
