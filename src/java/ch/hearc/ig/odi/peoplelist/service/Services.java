@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -105,6 +106,7 @@ public class Services implements Serializable{
      * @param birthDate Date de naissance de la personne
      * @return L'ID de la nouvelle personne
      */
+    @NotNull
     public Long savePerson(String gender, String firstName, String lastName, Boolean married, Date birthDate){
         Person person = new Person();
         
@@ -126,14 +128,17 @@ public class Services implements Serializable{
         people.remove(person.getId());
     }
     
+    @NotNull
     public Person getPerson(Long id){
         return people.get(id);
     }
     
+    @NotNull
     public Map<Long, Person> getPeople(){
         return people;
     }
     
+    @NotNull
     public List<Person> getPeopleList(){
         return new ArrayList(people.values());
     }

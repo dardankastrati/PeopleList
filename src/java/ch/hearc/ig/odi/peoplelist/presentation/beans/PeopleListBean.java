@@ -17,6 +17,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -26,11 +27,15 @@ import javax.inject.Inject;
 //@Dependent
 @RequestScoped
 public class PeopleListBean {
+
     private static final Logger LOG = Logger.getLogger(PeopleListBean.class.getName());
-    
+
     private Person person = new Person();
 
-    @Inject Services services;
+    @Inject
+    Services services;
+    @Inject
+    PersonValidator personValidator;
 
     /**
      * Creates a new instance of PeopleListBean
@@ -46,12 +51,15 @@ public class PeopleListBean {
         this.person = person;
     }
 
+    @NotNull
     public List getPeopleList() {
         return services.getPeopleList();
     }
 
     public void addPerson() {
-        services.savePerson(this.person.getGender(), this.person.getFirstName(), this.person.getLastName(), this.person.isMarried(), this.person.getBirthDate());
+        if (!personValidator.personNotExist(person)) {
+            services.savePerson(this.person.getGender(), this.person.getFirstName(), this.person.getLastName(), this.person.isMarried(), this.person.getBirthDate());
+        }
     }
 
     public void delPerson() {
