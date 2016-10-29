@@ -53,7 +53,7 @@ public class PeopleListBean {
     }
 
     public void addPerson() {
-        services.savePerson(person.getGender(), person.getFirstName(), person.getLastName(), person.isMarried(), person.getBirthDate());
+        services.savePerson(this.person.getGender(), this.person.getFirstName(), this.person.getLastName(), this.person.isMarried(), this.person.getBirthDate());
     }
 
     public void delPerson() {
