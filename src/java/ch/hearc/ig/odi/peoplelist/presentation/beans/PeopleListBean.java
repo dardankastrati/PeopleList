@@ -30,14 +30,12 @@ public class PeopleListBean {
     
     private Person person = new Person();
 
-    @Inject
-    Services services;
+    @Inject Services services;
 
     /**
      * Creates a new instance of PeopleListBean
      */
     public PeopleListBean() {
-        LOG.setLevel(Level.ALL);
     }
 
     public Person getPerson() {
@@ -63,9 +61,8 @@ public class PeopleListBean {
             // Redirection de la page
             ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
             context.redirect(context.getRequestContextPath() + "/index.xhtml");
-        } catch (IOException e) {
-            e.printStackTrace();
-            //LOG.log(Level.SEVERE, "Une erreur s'est produite : " + e.getLocalizedMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(PeopleListBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
