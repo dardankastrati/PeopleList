@@ -12,14 +12,14 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateful;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author julien.plumez
  */
-@RequestScoped
+@SessionScoped
 @Stateful	// Chaque instance sera diff�rente des autres
 @Named(value = "services")
 public class Services implements Serializable{
