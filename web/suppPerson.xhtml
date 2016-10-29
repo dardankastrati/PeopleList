@@ -12,7 +12,9 @@
             <h:selectOneMenu id="lovPeoples" value="#{peopleListBean.person}" >
                 <f:converter binding="#{personLOVConverter}" />
                 <f:selectItems value="#{peopleListBean.peopleList}" var="people" itemLabel="#{people.firstName}" />
-            </h:selectOneMenu>    
+            </h:selectOneMenu> 
+            
+            <h:commandButton value="Supprimer" action="#{peopleListBean.delPerson()}" />
         </h:form>
     </h:body>
 </html>
