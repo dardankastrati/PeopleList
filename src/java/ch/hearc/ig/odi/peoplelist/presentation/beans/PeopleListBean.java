@@ -57,7 +57,7 @@ public class PeopleListBean {
     }
 
     public void addPerson() {
-        if (!personValidator.personNotExist(person)) {
+        if (personValidator.personNotExist(person)) {
             services.savePerson(this.person.getGender(), this.person.getFirstName(), this.person.getLastName(), this.person.isMarried(), this.person.getBirthDate());
         }
     }
